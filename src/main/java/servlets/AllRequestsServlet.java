@@ -21,12 +21,13 @@ public class AllRequestsServlet extends HttpServlet {
 
     //обработка get запроса
     public void doGet(HttpServletRequest request,
-                      HttpServletResponse response) throws ServletException, IOException {
+                      HttpServletResponse response) throws IOException {
 
         Map<String, Object> pageVariables = createPageVariablesMap(request);
         pageVariables.put("message", "");
 
         //response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
+        //response.getWriter().println(request.getParameter("key") +" "+ request.getParameter("key1"));
         response.getWriter().println(request.getParameter("key"));
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -35,7 +36,7 @@ public class AllRequestsServlet extends HttpServlet {
 
     //обработка пост запроса
     public void doPost(HttpServletRequest request,
-                       HttpServletResponse response) throws ServletException, IOException {
+                       HttpServletResponse response) throws  IOException {
         Map<String, Object> pageVariables = createPageVariablesMap(request);
 
         String message = request.getParameter("message");
